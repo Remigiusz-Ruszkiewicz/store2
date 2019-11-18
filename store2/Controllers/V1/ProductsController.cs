@@ -19,14 +19,14 @@ namespace store2.Controllers.V1
         {
             this.productsService = productsService;
         }
-        [HttpGet("api/products")]
+        [HttpGet("api/v1/products")]
         public IActionResult GetAll()
         {
 
             var response = productsService.GetAll().Select(x => new ProductResponse { Id = x.Id, Name = x.Name });
             return Ok(response);
         }
-        [HttpGet("api/products/{id}")]
+        [HttpGet("api/v1/products/{id}")]
         public IActionResult GetProduct([FromRoute]Guid id)
         {
 
@@ -38,7 +38,7 @@ namespace store2.Controllers.V1
             var response =  new ProductResponse { Id = product.Id, Name = product.Name };
             return Ok(response);
         }
-        [HttpPost("api/products")]
+        [HttpPost("api/v1/products")]
         public IActionResult AddProduct([FromBody]productRequest productRequest)
         {
             var product = productsService.AddProduct(productRequest.Name);
