@@ -8,9 +8,11 @@ namespace store2.Services
 {
     public interface IProductsService 
     {
-        ICollection<Product> GetAll();
-        Product GetProduct(Guid Id);
-        Product AddProduct(string Name);
+        Task<ICollection<Product>> GetAllAsync();
+        Task<Product> GetProductAsync(Guid Id);
+        Task<Product> AddProductAsync(string Name);
+        Task<Product> UpdateAsync(Product product);
+        Task<bool> DeleteAsync(Guid Id);
 
     }
 }
